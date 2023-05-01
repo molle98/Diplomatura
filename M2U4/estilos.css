@@ -1,0 +1,3 @@
+.carousel-item, .carousel-item img, .carousel-item {
+    max-height: 50vh;
+  }
