@@ -41,7 +41,7 @@ console.log("Transporte determinado:", determinarTransporte(distancia));
 
 let array = [1, 5, 6, 34, 6, 5, 8, 2, 23, 3];
 
-console.log("El mayor numero es:", devolverMayor(array));
+console.log("El mayor número es:", devolverMayor(array));
 
 
 
