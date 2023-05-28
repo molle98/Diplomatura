@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contador de Caracteres</title>
+    <script>
+        function contarCaracteres() {
+            var textarea = document.getElementById("myTextarea");
+            var contador = document.getElementById("contador");
+            var contadorCaracter = textarea.value.length;
+            contador.textContent = "Caracteres utilizados: " + contadorCaracter;
+        }
+    </script>
+</head>
+<body>
+    <textarea id="myTextarea" rows="4" cols="50" oninput="contarCaracteres()"></textarea>
+    <p id="contador">Caracteres utilizados: 0</p>
+</body>
+</html>
