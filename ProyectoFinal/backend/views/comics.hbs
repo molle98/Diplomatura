@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Lista de Cómics</title>
-</head>
-<body>
-  <h1>Lista de Cómics</h1>
-  <ul>
-    {{#each comics}}
-    <li>
-      <img src="{{image}}" alt="{{title}}" width="200" height="300">
-      <h2>{{title}}</h2>
-      <p>${{price}}</p>
-      <p>{{description}}</p>
-    </li>
-    {{/each}}
-  </ul>
-</body>
-</html>
+<div class="comics-container">
+  {{#each comics}}
+    <div class="comic">
+      <img src="{{image}}" alt="{{title}}">
+      <p>{{title}}</p>
+    </div>
+  {{/each}}
+</div>

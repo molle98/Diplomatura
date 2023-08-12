@@ -14,7 +14,8 @@ const ComicsPage = () => {
       });
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div className="comics-page" dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
 export default ComicsPage;
+

@@ -9,6 +9,7 @@ header {
   padding: 16px 0;
 }
 
+
 .center {
   display: block;
   margin-left: auto;
@@ -131,16 +132,23 @@ input[type="submit"]:hover {
   background-color: #45a049;
 }
 
-/* ComicsPage.css */
+
 .comics-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Ajustamos el espacio entre las columnas */
-  margin-left: 60px; /* Ajusta la cantidad de margen hacia la derecha según tus necesidades */
+  justify-content: center;
 }
 
-.card {
-  width: calc(33.33% - 20px); /* Establecemos el ancho de cada cómic en un tercio del contenedor */
-  margin-bottom: 20px; /* Añadimos margen inferior para separar las filas de cómics */
+.comic {
+  display: inline-block;
+  width: calc(33.33% - 100px); /* Ancho de cada cómic (3 cómics por fila) */
+  margin: 5px 5px 0; /* Margen vertical entre cómics */ /* Margen derecho entre cómics en la misma fila */
+  text-align: center;
 }
 
+
+.comic img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+}

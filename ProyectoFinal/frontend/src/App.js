@@ -12,15 +12,23 @@ import './App.css';
 function App() {
   return (
     <Router>
+      <div className="header-section">
       <Header />
+      </div>
+      <div className="nav-section">
       <Nav />
+      </div>
+      <div className="content-section">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/nosotros" element={<NosotrosPage />} />
         <Route path="/comics" element={<ComicsPage />} />
         <Route path="/contacto" element={<ContactoPage />} />
       </Routes>
+      </div>
+      <div className="footer-section">
       <Footer />
+      </div>
     </Router>
   );
 }
