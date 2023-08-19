@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Editar Cómic</title>
+</head>
+<body>
+  <h2>Editar Cómic</h2>
+  <form action="/comics/update/{{comicId}}" method="POST">
+    <!-- Agregar campos para editar los detalles del cómic -->
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" value="{{comic.title}}" required>
+    <label for="image">Imagen URL:</label>
+    <input type="text" id="image" name="image" value="{{comic.image}}" required>
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description" required>{{comic.description}}</textarea>
+    <button type="submit">Guardar Cambios</button>
+  </form>
+</body>
+</html>

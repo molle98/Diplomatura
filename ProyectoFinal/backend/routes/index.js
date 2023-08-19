@@ -5,8 +5,8 @@ var pool = require('../models/db');
 
 router.get('/', async (req, res) => {
   try {
-    const query = 'SELECT url FROM ImagenesHome WHERE id = 1'; // Cambia esto según tu estructura
-    const result = await pool.query(query, [1]); // Cambia el ID según corresponda
+    const query = 'SELECT url FROM ImagenesHome WHERE id = 1'; 
+    const result = await pool.query(query, [1]); 
     
     const data = {
       imageUrl: result[0].url
@@ -25,19 +25,19 @@ router.get('/contacto', (req, res) => {
 
 router.get('/nosotros', async (req, res) => {
   try {
-    // Realizar la consulta para obtener las imágenes de la tabla imagenesNosotros
-    const nosotrosQuery = 'SELECT * FROM imagenesNosotros'; // Cambiar esto según tu estructura
+    
+    const nosotrosQuery = 'SELECT * FROM imagenesNosotros'; 
     const nosotrosResult = await pool.query(nosotrosQuery);
 
-    // Obtener las URLs de las imágenes de Alan Moore y Frank Miller
-    const alanMooreImage = nosotrosResult.find(img => img.id === 1).url; // Cambiar el ID según corresponda
-    const frankMillerImage = nosotrosResult.find(img => img.id === 2).url; // Cambiar el ID según corresponda
+    
+    const alanMooreImage = nosotrosResult.find(img => img.id === 1).url; 
+    const frankMillerImage = nosotrosResult.find(img => img.id === 2).url; 
 
-    // Renderizar la vista nosotros.hbs con las rutas de las imágenes
+    
     res.render('nosotros', { alanMoore: alanMooreImage, frankMiller: frankMillerImage });
   } catch (error) {
     console.error('Error al obtener las imágenes de la página "Nosotros":', error);
-    res.render('error'); // Manejar el error de manera adecuada en tu aplicación
+    res.render('error');
   }
 });
 
@@ -56,8 +56,62 @@ router.get('/comics', (req, res) => {
   });
 });
 
+router.get('/comics/create', (req, res) => {
+  res.render('createComics');
+});
+
+//Manejar creacion de comics
+router.post('/comics/create', (req, res) => {
+  const { title, image, price, description } = req.body;
+
+  // Realizar la consulta SQL para insertar un nuevo cómic en la base de datos
+  const insertQuery = 'INSERT INTO comics (title, image, price, description) VALUES (?, ?, ?, ?)';
+  pool.query(insertQuery, [title, image, price, description], (error, results) => {
+    if (error) {
+      console.error('Error al crear el cómic:', error);
+      res.sendStatus(500); // Error interno del servidor
+    } else {
+      console.log('Cómic creado:', results);
+      res.redirect('/comics'); // Redirigir de vuelta a la página de cómics
+    }
+  });
+});
 
 
+// Ruta para mostrar el formulario de edición de cómics
+router.get('/comics/edit/:id', async (req, res) => {
+  const comicId = req.params.id;
+  try {
+    // Realizar consulta a la base de datos para obtener los detalles del cómic por su ID
+    const query = 'SELECT * FROM comics WHERE id = ?';
+    const comic = await pool.query(query, [comicId]);
+    
+    // Renderizar la vista editComic.hbs con los datos del cómic
+    res.render('editComics', { comicId, comic: comic[0] });
+  } catch (error) {
+    console.error('Error al obtener el cómic para editar:', error);
+    res.render('error');
+  }
+});
+
+
+// Ruta para eliminar un cómic por su ID
+router.delete('/comics/delete/:id', (req, res) => {
+  const comicId = req.params.id;
+
+  // Realiza la consulta SQL para eliminar el cómic por su ID
+  const deleteQuery = 'DELETE FROM comics WHERE id = ?';
+
+  pool.query(deleteQuery, [comicId], (error, results) => {
+    if (error) {
+      console.error('Error al eliminar el cómic:', error);
+      res.sendStatus(500); // Error interno del servidor
+    } else {
+      console.log('Cómic eliminado:', results);
+      res.sendStatus(200); // OK
+    }
+  });
+});
 
 
 module.exports = router;
