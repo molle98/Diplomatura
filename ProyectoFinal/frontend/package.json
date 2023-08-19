@@ -59,7 +59,7 @@
   "bugs": {
     "url": "https://github.com/molle98/Diplomatura/issues"
   },
-  "homepage": "/comiqueria",
+  "homepage": "/",
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
