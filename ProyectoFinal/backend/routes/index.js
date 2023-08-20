@@ -120,21 +120,39 @@ router.post("/comics/update/:id", async (req, res) => {
 });
 
 // Ruta para eliminar un cómic por su ID
-router.delete("/comics/delete/:id", (req, res) => {
+router.get("/comics/delete/:id", async (req, res) => {
+  const comicId = req.params.id;
+  const deleteUrl = `http://localhost:3000/comics/confirmdelete/${comicId}`;
+  try {
+    // Realizar consulta a la base de datos para obtener los detalles del cómic por su ID
+    const query = "SELECT * FROM comics WHERE id = ?";
+    const comic = await pool.query(query, [comicId]);
+
+    // Renderizar la vista deleteComic.hbs con los datos del cómic
+    res.render("deleteComics", { comicId, deleteUrl, comic: comic[0] });
+  } catch (error) {
+    console.error("Error al obtener el cómic para eliminar:", error);
+    res.render("error");
+  }
+});
+
+
+router.post("/comics/confirmdelete/:id", async (req, res) => {
   const comicId = req.params.id;
 
-  // Realiza la consulta SQL para eliminar el cómic por su ID
-  const deleteQuery = "DELETE FROM comics WHERE id = ?";
+  try {
+    // Realizar consulta SQL para eliminar el cómic por su ID
+    const deleteQuery = 'DELETE FROM comics WHERE id = ?';
+    await pool.query(deleteQuery, [comicId]);
 
-  pool.query(deleteQuery, [comicId], (error, results) => {
-    if (error) {
-      console.error("Error al eliminar el cómic:", error);
-      res.sendStatus(500); // Error interno del servidor
-    } else {
-      console.log("Cómic eliminado:", results);
-      res.sendStatus(200); // OK
-    }
-  });
+    console.log('Cómic eliminado');
+    res.redirect("http://localhost:3001/comics"); // Redirigir a la página de cómics
+  } catch (error) {
+    console.error('Error al eliminar el cómic:', error);
+    res.sendStatus(500); // Error interno del servidor
+  }
 });
+
+
 
 module.exports = router;

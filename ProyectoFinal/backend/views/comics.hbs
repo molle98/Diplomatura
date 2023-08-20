@@ -3,18 +3,18 @@
 <head>
   <title>Comics</title>
   <link rel="stylesheet" href="http://localhost:3001/app.css"> <!-- Cambia la URL según tu configuración -->
-  <script src="../public/script.js"></script>
 </head>
 <body>
   <div>
     <main class="holder">
       <div class="comics-container">
-        <a href="/comics/create" class="create-comic-btn">Crear Cómic</a>
+        <a href="/comics/create" class="create-comic-btn">Agregar Cómic</a>
         {{#each comics}}
         <div class="comic">
           <img src="{{image}}" alt="{{title}}">
           <h3>{{title}}</h3>
-          <button class="delete-comic" data-id="{{id}}">Eliminar</button>
+          
+          <a href="/comics/delete/{{id}}">Eliminar</a>
           <a href="/comics/edit/{{id}}">Editar</a>
         </div>
         {{/each}}
@@ -22,4 +22,6 @@
     </main>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
+  <script src="../script.js"></script>
+</body>
+</html>

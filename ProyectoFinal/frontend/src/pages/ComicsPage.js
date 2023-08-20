@@ -13,6 +13,7 @@ const ComicsPage = () => {
         console.error('Error al obtener la página de cómics:', error);
       });
   }, []);
+  
 
   return <div className="comics-page" dangerouslySetInnerHTML={{ __html: html }} />;
 };

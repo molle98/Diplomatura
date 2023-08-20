@@ -9,7 +9,9 @@ import ContactoPage from './pages/ContactoPage';
 import Footer from './components/Footer';
 import EditComicsPage from './pages/EditComicsPage';
 import CreateComicsPage from './pages/CreateComicsPage';
+import DeleteComicsPage from './pages/DeleteComicsPage';
 import './App.css';
+
 
 function App() {
   return (
@@ -23,8 +25,9 @@ function App() {
             <Route path="/nosotros" element={<NosotrosPage />} />
             <Route path="/comics" element={<ComicsPage />} />
             <Route path="/contacto" element={<ContactoPage />} />
-            <Route path="/comics/edit/:id" element={<EditComicsPage />} />
             <Route path="/comics/create" element={<CreateComicsPage />} />
+            <Route path="/comics/edit/:id" element={<EditComicsPage />} />
+            <Route path="/comics/delete/:id" element={<DeleteComicsPage />} />
           </Routes>
         </main>
         <Footer />
