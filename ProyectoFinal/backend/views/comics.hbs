@@ -13,9 +13,10 @@
         <div class="comic">
           <img src="{{image}}" alt="{{title}}">
           <h3>{{title}}</h3>
-          
-          <a href="/comics/delete/{{id}}">Eliminar</a>
-          <a href="/comics/edit/{{id}}">Editar</a>
+          <div class="button-container">
+          <a href="/comics/delete/{{id}}" class="button delete-btn">Eliminar</a>
+          <a href="/comics/edit/{{id}}" class="button edit-btn">Editar</a>
+          </div>
         </div>
         {{/each}}
       </div>

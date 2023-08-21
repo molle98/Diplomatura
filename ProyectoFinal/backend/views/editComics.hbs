@@ -3,11 +3,11 @@
 
 <head>
     <title>Editar Cómic</title>
+    <link rel="stylesheet" href="http://localhost:3001/app.css">
 </head>
 
 <body>
-    <h2>Editar Cómic</h2>
-    <form action="{{updateUrl}}" method="POST">
+    <form class="comic-form" action="{{updateUrl}}" method="POST">
         <label for="title">Título:</label>
         <input type="text" id="title" name="title" value="{{comic.title}}" required>
         <label for="image">Imagen URL:</label>

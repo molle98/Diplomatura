@@ -45,7 +45,7 @@ const ContactoPage = (props) => {
           method="post"
           onSubmit={handleSubmit}
         >
-          <div class="form-group">
+          <div className="form-group">
             <label for="name">Nombre:</label>
             <input
               type="text"
@@ -56,7 +56,7 @@ const ContactoPage = (props) => {
               required
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="email">Email:</label>
             <input
               type="email"
@@ -67,7 +67,7 @@ const ContactoPage = (props) => {
               required
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="email">Telefono:</label>
             <input
               type="phone"
@@ -78,7 +78,7 @@ const ContactoPage = (props) => {
               required
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <label for="message">Mensaje:</label>
             <textarea
               id="message"
@@ -97,7 +97,7 @@ const ContactoPage = (props) => {
         {msg ? <p>{msg}</p> : null}
       </div>
       <br />
-      <div class="datos">
+      <div className="datos">
         <h2>Otras vías de comunicación</h2>
         <ul>
           <li>Teléfono: </li>
