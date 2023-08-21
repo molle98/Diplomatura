@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var pool = require("../models/db");
+var nodemailer = require('nodemailer');
 
 router.get("/", async (req, res) => {
   try {
@@ -151,6 +152,34 @@ router.post("/comics/confirmdelete/:id", async (req, res) => {
     console.error('Error al eliminar el cómic:', error);
     res.sendStatus(500); // Error interno del servidor
   }
+});
+
+
+router.post('/contacto', async (req, res) => {
+  const mail = {
+    to: 'mmollerach98@gmail.com',
+    subject: 'Contacto Web',
+    html: `${req.body.name} se contacto a traves de la web y quiere mas informacion a este correo ${req.body.email}
+    <br> Ademas, hizo el siguiente comentario: ${req.body.message} <br> Su tel es: ${req.body.phone}`
+  }
+
+
+  const transport = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
+    }
+  });
+
+  await transport.sendMail(mail)
+
+  res.status(201).json({
+    error: false,
+    message: 'Mensaje Enviado'
+  });
+
 });
 
 

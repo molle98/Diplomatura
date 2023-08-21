@@ -141,15 +141,15 @@ input[type="submit"]:hover {
 
 .comic {
   display: inline-block;
-  width: calc(33.33% - 100px); /* Ancho de cada cómic (3 cómics por fila) */
-  margin: 5px 5px 0; /* Margen vertical entre cómics */ /* Margen derecho entre cómics en la misma fila */
+  width: calc(33.33% - 100px); 
+  margin: 5px 5px 0; 
   text-align: center;
 }
 
 .create-comic-btn {
   position: absolute;
   top: 50px;
-  right: 90px; /* Ajusta este valor para mover el botón a la izquierda */
+  right: 90px; 
   background-color: green;
   color: white;
   padding: 12px 24px;
